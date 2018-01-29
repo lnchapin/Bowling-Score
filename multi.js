@@ -31,6 +31,7 @@ document.querySelector("#namesOfPlayers").addEventListener("submit", function(ev
 
 document.querySelector("#scoreInput").addEventListener("submit", function(event) {
     checkFrame(Number(document.getElementById("numberOfPinsValue").value))
+    document.getElementById("numberOfPinsValue").value = ""
      event.preventDefault();
 }, false);
 
@@ -60,6 +61,7 @@ function checkFrame(num){
 function reducing(a, b) {
   return a + b;
 }
+
 
 function scoreReduction(obj) {
   total = 0;
@@ -95,9 +97,14 @@ Player.prototype.scores = function (num) {
   let name = this.name
   let score = this.finalScore
 
+  function finder(element) {
+  return element.name == name && element.finalScore == score;
+  }
+
   if (Object.keys(this.finalScore).length > 11) {
   location.reload()
 }
+console.log(num);
 
 if(num > 10){
   alert("invalid input: That number is more than there are pins avalible input a number between 0 and 10");
@@ -107,10 +114,12 @@ if (Object.keys(this.finalScore).length < 9) {
   if (num == 10 && this.roll == 0) {
     this.finalScore[this.frame] = [num];
     this.frame++;
+    $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
   } else if (num < 10 && this.roll == 0) {
     this.score += num;
     this.finalScore[this.frame] = [num];
     this.roll++;
+    $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
   } else if (num - this.score <= 10 && this.frame < 10 && this.roll == 1) {
     if (num > 10 - this.score) {
       alert("invalid input: That number is more than there are pins avalible input a number between 0 and " + (
@@ -121,6 +130,7 @@ if (Object.keys(this.finalScore).length < 9) {
       this.finalScore[this.frame].push(num);
       this.score = 0;
       this.frame++;
+      $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
     }
   }
 }
@@ -128,8 +138,10 @@ else if (Object.keys(this.finalScore).length == 9){
   if(this.finalScore[8].length == 1 && this.finalScore[8][0] < 10 ){
   this.finalScore[this.frame].push(num);
   this.frame++;
+  $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
   } else {
     this.finalScore[this.frame] = [num];
+    $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
   }
 }
 else if (Object.keys(this.finalScore).length == 10) {
@@ -156,6 +168,7 @@ else if (Object.keys(this.finalScore).length == 10) {
   else if(this.finalScore[9].reduce(reducing) == 10 && this.finalScore[9].length == 1){
     this.finalScore[10] = [num];
     this.frame++;
+    $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
   }
 }
 else if (Object.keys(this.finalScore).length == 11){
@@ -164,11 +177,4 @@ else if (Object.keys(this.finalScore).length == 11){
     alert(this.name + " Good Game you're score was "+ scoreReduction(this.finalScore));
     this.frame = 12;
 }
-
-  function finder(element) {
-  return element.name == name && element.finalScore == score;
-  }
-  if(num < 11 && num < 11 - this.score &&Object.keys(this.finalScore).length < 12){
- $("#name"+ totalPlayers.findIndex(finder)).append("<div><h5>"+Object.keys(this.finalScore).length+" : "+num+"</h5><div>")
- }
 };
