@@ -1,0 +1,25 @@
+html{
+  margin: 20px;
+  background: url("img/bowling_shoes.jpg") no-repeat fixed center center / cover  rgba(0, 0, 0, 0);
+}
+
+.invisible {
+  display: none;
+}
+
+body{
+  background: rgba(255, 255, 255, 0.7);
+	padding: 10px;
+	border-radius: 10px 10px 10px 10px;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+}
+
+h1{
+  font-family: 'Yesteryear', cursive;
+  text-align: center;
+}
+
+input[type=number]:not(.browser-default), input[type=text]:not(.browser-default){
+  width: 50%;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Redzone Bowling</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Yesteryear" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Bowling Score Sheet</h1>
+  <div id="numberOfPlayersQuestion" class="center-align">
+    <h3>How many bowlers do we have?</h3>
+    <form class="" action="index.html" method="post" id="numberOfPlayers">
+      <input id="numberofPlayersValue" type="number" name="" value="">
+      <input class="center-align" type="submit">
+    </form>
+  </div>
+  <div id="nameOfPlayersQuestion" class="invisible center-align">
+    <h3>What are your players names?</h3>
+    <form action="index.html" method="post" id="namesOfPlayers">
+      <input id="playerName" type="text" name="" value="">
+      <input type="submit">
+    </form>
+  </div>
+  <div id="scoreInput" class="invisible center-align">
+    <h3>How many pins were knocked down?</h3>
+    <form class="" action="index.html" method="post" id="numberOfPins">
+      <input id="numberOfPinsValue" type="number" name="" value="">
+      <input type="submit">
+    </form>
+  </div>
+  <section id="scoreboard" class="scoreboard">
+
+  </section>
+
+
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="multi.js"></script>
+</body>
+
+</html>
